@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+h1,h2,h3,h4,h5{
+    font-family: Roboto;
+}
+
+.main{
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.main .head-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.head-wrapper img{
+    width: 50px;
+}
+
+.address h4{
+    font-weight: 500;
+    margin: 0;
+}
+
+.address{
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 15px 0px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  tr {
+    border: 1px solid #dddddd;
+  }
+
+  td,th{
+    text-align: left;
+    padding: 8px;
+  }
+
+  .right-align{
+    text-align: right;
+  }

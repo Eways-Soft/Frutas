@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+        h1,h2,h3,h4,h5{
+            font-family: poppins;
+        }
+
+        .main{
+            padding: 0px 20px;
+            max-width: 100%;
+        }
+
+        .main .head-wrapper{
+            display: -webkit-flex;
+              align-items: center;
+            -webkit-align-items: center;
+              justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+        }
+
+        .head-wrapper img{
+            width: 100px;
+        }
+
+        .address {
+            margin: 0 !important;
+        }
+
+        .items .item-details .item-head h3{
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: capitalize;
+         }
+         
+         .payment .payment-details .payment-head h3{
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: capitalize;
+         }
+         
+         .transaction .transaction-details .transaction-head h3{
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: capitalize;
+         }
+         
+         .shipping .shipping-detail .shipping-head h3{
+            font-size: 19px;
+            font-weight: 600;
+            text-transform: capitalize;
+         }
+
+        .address-left h4{
+            font-weight:400;
+        }
+         .address .order-detail h4{
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .shipping-inner {
+            border: 1px solid #dddddd;
+            padding: 10px;
+        }
+
+        .shipping-inner h3 {
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        .address{
+            display: -webkit-flex;
+            align-items: center;
+            -webkit-align-items: center;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+            margin: 15px 0px;
+        }
+        .payment-inner tbody tr th{
+            font-weight:400;
+        }
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          tr {
+            border: 1px solid #dddddd;
+          }
+
+          td,th{
+            text-align: left;
+            padding: 8px;
+          }
+
+          .right-align{
+            text-align: right;
+          }
+
+         .shipping .shipping-detail .shipping-inner .details h3 {
+            font-weight: 500;
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .address h4 span {
+            margin-left: 25px;
+            font-weight: 400;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="main">
+        <div class="head-wrapper">
+            <img src="${imgSrc}">
+        </div>
+
+        <div class="address">
+            <div class="address-left">
+                <h4>14-18 city Road<br>phase 2, Panchkula</h4>
+            </div>
+
+            <div class="order-detail">
+                <h4>Order<span>#{{order_detail.order_no}}</span><h4>
+                <h4>Invoice Date<span>{{current_date}}</span><h4>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-details">
+                <div class="item-head"><h3>item Details</h3></div>
+                <div class="item-inner">
+                    <table>
+                        <tr>
+                          <th>Sr No</th>
+                          <th>Name</th>
+                          <th>Sale Price</th>
+                          <th>Actual Sale Price</th>
+                          <th>Qty</th>
+                          <th class="right-align">Total Amount</th>
+                        </tr>
+                        {{#each order_baskets}}
+                            <tr>
+                              <td>1</td>
+                              <td>{{this.basket_name}}</td>
+                              <td>{{this.basket_sale_price}}</td>
+                              <td>{{this.actual_price}}</td>
+                              <td>{{this.quantity}}</td>
+                              <td class="right-align">{{this.actual_price}}</td>
+                            </tr>
+                        {{/each}}
+                      </table>
+                      
+                </div>
+            </div>
+        </div>
+        <div class="payment">
+            <div class="payment-details">
+                <div class="payment-head"><h3>Payment Details</h3></div>
+                <div class="payment-inner">
+                    <table>
+                        <tr>
+                          <th>Sub Total</th>
+                          <td class="right-align">{{order_detail.sub_total}}</td>
+                        </tr>
+                        <tr>
+                            <th>Discount</th>
+                            <td class="right-align">{{order_detail.delivery_chages}}</td>
+                        </tr>
+                        <tr>
+                            <th>Total</th>
+                            <td class="right-align">{{order_detail.total_amount_paid}}</td>
+                        </tr>
+
+                      </table>
+                      
+                </div>
+            </div>
+        </div>
+        <div class="transaction">
+            <div class="transaction-details">
+                <div class="transaction-head"><h3>Transaction Details</h3></div>
+                <div class="transaction-inner">
+                    <table>
+                        <tr>
+                          <th>Type</th>
+                          <th class="right-align">Amount</th>
+                        </tr>
+                        <tr>
+                          <td>Cash on Delivery</td>
+                          <td class="right-align">{{order_detail.total_amount_paid}}</td>
+                        </tr>
+                      </table>
+                      
+                </div>
+            </div>
+        </div>
+
+        <div class="shipping">
+            <div class="shipping-detail">
+                <div class="shipping-head"><h3>Shipping Details</h3></div>
+                <div class="shipping-inner">
+                    <h3>Invoice To:</h3>
+                <div class="details">
+                    <h3>{{order_detail.delivery_name}}</h3>
+                    <h3>{{order_detail.delivery_address}}</h3>
+                    <h3>{{order_detail.delivery_city}}</h3>
+                    <h3>{{order_detail.delivery_pincode}}</h3>
+                    <h3>{{order_detail.delivery_mobile_no}}</h3>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
