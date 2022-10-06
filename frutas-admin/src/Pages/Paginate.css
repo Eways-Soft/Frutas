@@ -1,0 +1,42 @@
+.pagination {
+ display: flex;
+ list-style: none;
+ outline: none;
+ justify-content: flex-end;
+}
+.pagination>.active>a {
+ background-color: #ed872b;
+ color: #fff;
+}
+.pagination>li>a {
+ border: 1px solid #e2e2e2;
+ padding: 8px 10px;
+ outline: none;
+ cursor: pointer;
+}
+.pagination>li>a, .pagination>li>span {
+ /* background-color: azure; */
+}
+.pagination li.disabled {
+    opacity: 0.6;
+}
+.cellImage{
+    height: 100%;
+}
+.ag-row-hover>.editcolumn span a i{
+  opacity: 1;
+  color:rgba(25, 27, 25, 0.507);
+}
+.editcolumn span a i{
+   
+    opacity: -1;
+}
+
+
+.ag-header-cell-label{
+    text-transform: uppercase;
+}
+
+
+
+
